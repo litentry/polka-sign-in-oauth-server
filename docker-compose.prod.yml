@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  oauth-server:
+    build:
+      context: .
+    ports:
+      - 3000
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?err}
+      POSTGRES_USER: ${POSTGRES_USER:?err}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?err}
+      POSTGRES_HOST: postgres
+      OAUTH_CODES_SECRET: ${OAUTH_CODES_SECRET:?err}
+      POLKADOT_PROVIDER: ${POLKADOT_PROVIDER:?err}
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?err}
+      POSTGRES_USER: ${POSTGRES_USER:?err}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?err}
+      TZ: UTC
+      PGTZ: UTC
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/pgdata:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx:1.15-alpine
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
