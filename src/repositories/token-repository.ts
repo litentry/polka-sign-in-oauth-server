@@ -1,5 +1,9 @@
 import { Repository } from "typeorm";
-import { DateInterval, generateRandomToken, OAuthTokenRepository } from "@jmondi/oauth2-server";
+import {
+  DateInterval,
+  generateRandomToken,
+  OAuthTokenRepository,
+} from "@jmondi/oauth2-server";
 
 import { Client } from "../entities/client";
 import { Scope } from "../entities/scope";
@@ -20,7 +24,11 @@ export class TokenRepository implements OAuthTokenRepository {
     });
   }
 
-  async issueToken(client: Client, scopes: Scope[], user?: User): Promise<Token> {
+  async issueToken(
+    client: Client,
+    scopes: Scope[],
+    user?: User
+  ): Promise<Token> {
     const token = new Token();
     token.accessToken = generateRandomToken();
     token.accessTokenExpiresAt = new DateInterval("2h").getEndDate();
@@ -28,14 +36,14 @@ export class TokenRepository implements OAuthTokenRepository {
     token.clientId = client.id;
     token.userId = user?.id;
     token.scopes = [];
-    scopes.forEach(scope => token.scopes.push(scope));
+    scopes.forEach((scope) => token.scopes.push(scope));
     return token;
   }
 
   async getByRefreshToken(refreshTokenToken: string): Promise<Token> {
     return this.tokenRepo.findOneOrFail(
       { refreshToken: refreshTokenToken },
-      { relations: ["client", "scopes", "user"] },
+      { relations: ["client", "scopes", "user"] }
     );
   }
 

@@ -1,5 +1,9 @@
 import { Repository } from "typeorm";
-import { DateInterval, OAuthAuthCodeRepository, generateRandomToken } from "@jmondi/oauth2-server";
+import {
+  DateInterval,
+  OAuthAuthCodeRepository,
+  generateRandomToken,
+} from "@jmondi/oauth2-server";
 
 import { AuthCode } from "../entities/auth-code";
 import { Client } from "../entities/client";
@@ -26,7 +30,7 @@ export class AuthCodeRepository implements OAuthAuthCodeRepository {
     authCode.clientId = client.id;
     authCode.userId = user?.id;
     authCode.scopes = [];
-    scopes.forEach(scope => authCode.scopes.push(scope));
+    scopes.forEach((scope) => authCode.scopes.push(scope));
     return authCode;
   }
 

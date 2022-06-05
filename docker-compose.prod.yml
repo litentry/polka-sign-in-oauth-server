@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   oauth-server:
@@ -31,8 +31,8 @@ services:
   nginx:
     image: nginx:1.15-alpine
     ports:
-      - '80:80'
-      - '443:443'
+      - "80:80"
+      - "443:443"
     volumes:
       - ./config/nginx:/etc/nginx/conf.d
       - ./data/certbot/conf:/etc/letsencrypt

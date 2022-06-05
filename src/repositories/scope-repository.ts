@@ -1,5 +1,9 @@
 import { In, Repository } from "typeorm";
-import { GrantIdentifier, OAuthScope, OAuthScopeRepository } from "@jmondi/oauth2-server";
+import {
+  GrantIdentifier,
+  OAuthScope,
+  OAuthScopeRepository,
+} from "@jmondi/oauth2-server";
 
 import { Client } from "../entities/client";
 import { Scope } from "../entities/scope";
@@ -15,7 +19,7 @@ export class ScopeRepository implements OAuthScopeRepository {
     scopes: OAuthScope[],
     identifier: GrantIdentifier,
     client: Client,
-    user_id?: string,
+    user_id?: string
   ): Promise<OAuthScope[]> {
     return scopes;
   }

@@ -48,7 +48,10 @@ export class Token implements OAuthToken {
   @ManyToMany(() => Scope, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   @JoinTable({
     name: "oauth_token_scopes",
-    joinColumn: { name: "tokenAccessToken", referencedColumnName: "accessToken" },
+    joinColumn: {
+      name: "tokenAccessToken",
+      referencedColumnName: "accessToken",
+    },
     inverseJoinColumn: { name: "scopeId", referencedColumnName: "id" },
   })
   scopes!: Scope[];

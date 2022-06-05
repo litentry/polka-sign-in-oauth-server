@@ -1,4 +1,12 @@
-import {Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryColumn, PrimaryGeneratedColumn} from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { GrantIdentifier, OAuthClient } from "@jmondi/oauth2-server";
 
 import { Scope } from "./scope";
@@ -36,6 +44,6 @@ export class Client implements OAuthClient {
   constructor(name: string, redirectUris: string[]) {
     this.name = name;
     this.redirectUris = redirectUris;
-    this.allowedGrants = ['authorization_code']
+    this.allowedGrants = ["authorization_code"];
   }
 }

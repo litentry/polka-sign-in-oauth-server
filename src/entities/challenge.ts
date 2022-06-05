@@ -1,12 +1,23 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, Index} from "typeorm";
-import {Client} from "./client";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+  Index,
+} from "typeorm";
+import { Client } from "./client";
 
 @Entity()
 export class Challenge {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @ManyToOne(() => Client, { nullable: false, onDelete: "CASCADE", onUpdate: "CASCADE" })
+  @ManyToOne(() => Client, {
+    nullable: false,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
   @JoinColumn({ name: "clientId" })
   client!: Client;
 
