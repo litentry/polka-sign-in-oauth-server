@@ -43,7 +43,7 @@
           "<h2>Successfully Authorised</h2><h3>Token</h3><p>" +
           JSON.stringify(token) +
           "</p><h3>JWT contents</h3><p>" +
-          parseJwt(token.token.value) +
+          JSON.stringify(parseJwt(token.token.value), null, 4) +
           "</p>";
       });
     })
