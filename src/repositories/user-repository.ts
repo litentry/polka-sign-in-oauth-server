@@ -22,6 +22,6 @@ export class UserRepository implements OAuthUserRepository {
   async extraAccessTokenFields(
     user: User
   ): Promise<ExtraAccessTokenFields | undefined> {
-    return {};
+    return { account: user.id };
   }
 }

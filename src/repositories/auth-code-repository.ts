@@ -3,6 +3,7 @@ import {
   DateInterval,
   OAuthAuthCodeRepository,
   generateRandomToken,
+  OAuthAuthCode,
 } from "@jmondi/oauth2-server";
 
 import { AuthCode } from "../entities/auth-code";
@@ -22,13 +23,18 @@ export class AuthCodeRepository implements OAuthAuthCodeRepository {
     return authCode.isExpired;
   }
 
-  issueAuthCode(client: Client, user: User | undefined, scopes: Scope[]) {
+  issueAuthCode(
+    client: Client,
+    user: User | undefined,
+    scopes: Scope[]
+  ): OAuthAuthCode {
     const authCode = new AuthCode();
     authCode.code = generateRandomToken();
     authCode.expiresAt = new DateInterval("15m").getEndDate();
     authCode.client = client;
     authCode.clientId = client.id;
     authCode.userId = user?.id;
+    authCode.user = user;
     authCode.scopes = [];
     scopes.forEach((scope) => authCode.scopes.push(scope));
     return authCode;

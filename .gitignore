@@ -1,6 +1,6 @@
 node_modules/
 .idea/
 lib/
-src/public/app.js
+public/app.js
 data/
 

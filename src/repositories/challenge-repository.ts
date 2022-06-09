@@ -12,8 +12,6 @@ export class ChallengeRepository {
   constructor(private readonly challengeRepo: Repository<Challenge>) {}
 
   async getByIdentifier(id: string): Promise<Challenge | undefined> {
-    console.log(id, "foo");
-    console.log(await this.challengeRepo.findOne(id));
     return this.challengeRepo.findOne(id);
   }
 
