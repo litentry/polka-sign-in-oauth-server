@@ -64,7 +64,7 @@ const addToForm = (form, data) => {
 
 const submitAuth = (address, challenge, signedChallenge) => {
   const form = document.createElement("form");
-  form.action = `/login${window.location.search}`;
+  form.action = `login${window.location.search}`;
   form.method = "post";
   document.body.appendChild(form);
   addToForm(form, { address, challenge, signedChallenge }).submit();

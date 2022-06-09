@@ -39,8 +39,6 @@ export default (
         challengeString
       );
 
-      console.log(challenge);
-
       if (!challenge || challenge.clientId !== authRequest.client.id) {
         return res.status(400).send("challenge not found");
       }
@@ -50,12 +48,18 @@ export default (
       }
 
       try {
-        await signIn({
+        const { identity, error } = await signIn({
           address,
           message: challengeString,
           signedMessage: signedChallenge,
           provider: process.env.POLKADOT_PROVIDER!,
         });
+
+        if (error) {
+          return res.status(403).send("Unauthorised");
+        }
+
+        console.log(identity);
       } catch (e) {
         return res.status(403).send("Unauthorised");
       }

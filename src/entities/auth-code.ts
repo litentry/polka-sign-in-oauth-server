@@ -9,7 +9,11 @@ import {
   ManyToOne,
   PrimaryColumn,
 } from "typeorm";
-import { CodeChallengeMethod, OAuthAuthCode } from "@jmondi/oauth2-server";
+import {
+  CodeChallengeMethod,
+  OAuthAuthCode,
+  OAuthUser,
+} from "@jmondi/oauth2-server";
 
 import { Client } from "./client";
 import { Scope } from "./scope";
@@ -24,6 +28,8 @@ export class AuthCode implements OAuthAuthCode {
   @Column("varchar", { nullable: true })
   // @IsUUID()
   userId?: string;
+
+  user?: OAuthUser;
 
   @ManyToOne(() => Client)
   @JoinColumn({ name: "clientId" })
