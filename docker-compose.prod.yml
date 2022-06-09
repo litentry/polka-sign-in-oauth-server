@@ -38,7 +38,6 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
       - ./demo:/var/www/demo-client
-      - ./node_modules/@bity/oauth2-auth-code-pkce:/var/www/demo-client/oauth2-auth-code-pkce
     command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
 
   certbot:
