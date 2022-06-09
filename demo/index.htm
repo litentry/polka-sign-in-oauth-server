@@ -39,7 +39,11 @@
       }
       return oauth.getAccessToken().then((token) => {
         document.getElementById("result").innerHTML =
-          "<b>Successfully Authorised</b><p>" + JSON.stringify(token) + "</p>";
+          "<b>Successfully Authorised</b><p>" +
+          token +
+          "</p><p>" +
+          parseJwt(JSON.parse(token).value) +
+          "</p>";
       });
     })
     .catch((potentialError) => {
