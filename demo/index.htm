@@ -40,11 +40,11 @@
       return oauth.getAccessToken().then((token) => {
         console.log(token);
         document.getElementById("result").innerHTML =
-          "<h2>Successfully Authorised</h2><h3>Token</h3><p>" +
+          "<h2>Successfully Authorised</h2><h3>Token</h3><pre>" +
           JSON.stringify(token) +
-          "</p><h3>JWT contents</h3><p>" +
+          "</pre><h3>JWT contents</h3><pre>" +
           JSON.stringify(parseJwt(token.token.value), null, 4) +
-          "</p>";
+          "</pre>";
       });
     })
     .catch((potentialError) => {
