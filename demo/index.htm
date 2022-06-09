@@ -40,10 +40,10 @@
       return oauth.getAccessToken().then((token) => {
         console.log(token);
         document.getElementById("result").innerHTML =
-          "<b>Successfully Authorised</b><p>" +
+          "<h2>Successfully Authorised</h2><h3>Token</h3><p>" +
           JSON.stringify(token) +
-          "</p><p>" +
-          // parseJwt(token.value) +
+          "</p><h3>JWT contents</h3><p>" +
+          parseJwt(token.token.value) +
           "</p>";
       });
     })
