@@ -38,11 +38,12 @@
         console.log("Something wrong...no auth code.");
       }
       return oauth.getAccessToken().then((token) => {
+        console.log(token);
         document.getElementById("result").innerHTML =
           "<b>Successfully Authorised</b><p>" +
-          token +
+          JSON.stringify(token) +
           "</p><p>" +
-          parseJwt(JSON.parse(token).value) +
+          // parseJwt(token.value) +
           "</p>";
       });
     })
