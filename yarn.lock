@@ -48,18 +48,18 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@litentry/polkasignin-client@https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-client?changes-for-oauth":
+"@litentry/polkasignin-client@https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-client?main&d":
   version "0.1.0"
-  resolved "https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-client?changes-for-oauth#b7210d17754054dd206b8435e6b399c19b07bb64"
+  resolved "https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-client?main&d#efa99ca07a51b67073e3d4db0b45515cf2137fbe"
   dependencies:
     "@polkadot/extension-dapp" "^0.42.7"
     "@polkadot/util" "^8.3.3"
     "@polkadot/util-crypto" "^8.3.3"
     typescript "^4.5.5"
 
-"@litentry/polkasignin-server@https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-server?changes-for-oauth":
+"@litentry/polkasignin-server@https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-server?main&f":
   version "0.1.0"
-  resolved "https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-server?changes-for-oauth#4c5b3a3ba7a146c6913ad933b036a610d1518ebd"
+  resolved "https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-server?main&f#f77b7b333b09fb48c8199f88273b1fa90178676d"
   dependencies:
     "@polkadot/api" "^7.9.1"
     "@polkadot/util" "^8.3.3"

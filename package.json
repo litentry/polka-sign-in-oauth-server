@@ -12,8 +12,8 @@
   "dependencies": {
     "@bity/oauth2-auth-code-pkce": "^2.13.0",
     "@jmondi/oauth2-server": "^2.2.3",
-    "@litentry/polkasignin-client": "https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-client?changes-for-oauth",
-    "@litentry/polkasignin-server": "https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-server?changes-for-oauth",
+    "@litentry/polkasignin-client": "https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-client?main&d",
+    "@litentry/polkasignin-server": "https://gitpkg.now.sh/litentry/PolkaSignIn/packages/polkasignin-server?main&f",
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
     "pg": "^8.7.3",
